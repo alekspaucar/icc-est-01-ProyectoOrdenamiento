@@ -1,15 +1,17 @@
+
 import java.util.Arrays;
+
 public class MetodosOrdenamiento {
 
-    public int[] burbujaOrdenamiento(int[] array , boolean cambio){
-        int[] arregloOrdenado = Arrays.copyOf(array, array.length); 
+    public int[] burbujaOrdenamiento(int[] array, boolean cambio) {
+        int[] arregloOrdenado = Arrays.copyOf(array, array.length);
         System.out.println("Iniciando el ordenamiento por Burbuja...");
         for (int i = 0; i < arregloOrdenado.length; i++) {
-            boolean intercambio = false; 
+            boolean intercambio = false;
             System.out.println("Iteración " + (i + 1) + ":");
             for (int j = i + 1; j < arregloOrdenado.length; j++) {
                 System.out.println("\tComparando " + arregloOrdenado[i] + " con " + arregloOrdenado[j]);
-                if (cambio) { 
+                if (cambio) {
                     if (arregloOrdenado[i] > arregloOrdenado[j]) {
                         int aux = arregloOrdenado[i];
                         arregloOrdenado[i] = arregloOrdenado[j];
@@ -36,10 +38,11 @@ public class MetodosOrdenamiento {
         System.out.println("Ordenamiento completo: " + Arrays.toString(arregloOrdenado));
         return arregloOrdenado;
     }
+
     public int[] seleccionOrdenamiento(int[] array, boolean cambio) {
         int[] arregloOrdenado = Arrays.copyOf(array, array.length);
 
-        if (cambio == true) {  
+        if (cambio == true) {
             for (int i = 0; i < arregloOrdenado.length - 1; i++) {
                 int indice = i;
                 System.out.println("Iteración " + i + ":");
@@ -55,11 +58,11 @@ public class MetodosOrdenamiento {
                 arregloOrdenado[i] = temp;
                 System.out.println("\tArreglo después del intercambio: " + Arrays.toString(arregloOrdenado));
             }
-        } else { 
+        } else {
             for (int i = 0; i < arregloOrdenado.length - 1; i++) {
                 int indice = i;
                 System.out.println("Iteración " + i + ":");
-    
+
                 for (int j = i + 1; j < arregloOrdenado.length; j++) {
                     System.out.println("\tComparando " + arregloOrdenado[j] + " con " + arregloOrdenado[indice]);
                     if (arregloOrdenado[j] > arregloOrdenado[indice]) {
@@ -70,46 +73,48 @@ public class MetodosOrdenamiento {
                 int temp = arregloOrdenado[indice];
                 arregloOrdenado[indice] = arregloOrdenado[i];
                 arregloOrdenado[i] = temp;
-    
+
                 System.out.println("\tArreglo después del intercambio: " + Arrays.toString(arregloOrdenado));
             }
         }
-    
+
         return arregloOrdenado;
     }
+
     public int[] insercionOrdenamiento(int[] array, boolean cambio) {
-            int[] arregloOrdenado = Arrays.copyOf(array, array.length);
-            if (cambio == true){
-                for (int j = 1; j < arregloOrdenado.length; j++) {
-                    System.out.println("REPASO DE NUMERO " + j);
-                    int key = arregloOrdenado[j];
-                    int i = j - 1;
-                    System.out.println("\ti=" + i + " j=" + j + " [i]=" + array[i] + " [j]=" + array[j]);
-                    while (i >= 0 && arregloOrdenado[i] > key) {
-                        System.out.println("\t\tComparamos " + key + " con " + array[j]);
-                        arregloOrdenado[i + 1] = arregloOrdenado[i];
-                        i--;
-                        System.out.println("\t\t--------" + Arrays.toString(array));
-                    }
-                    System.out.println("\t--------" + Arrays.toString(array));
-                    arregloOrdenado[i + 1] = key;
+        int[] arregloOrdenado = Arrays.copyOf(array, array.length);
+        if (cambio == true) {
+            for (int j = 1; j < arregloOrdenado.length; j++) {
+                System.out.println("REPASO DE NUMERO " + j);
+                int key = arregloOrdenado[j];
+                int i = j - 1;
+                System.out.println("\ti=" + i + " j=" + j + " [i]=" + array[i] + " [j]=" + array[j]);
+                while (i >= 0 && arregloOrdenado[i] > key) {
+                    System.out.println("\t\tComparamos " + key + " con " + array[j]);
+                    arregloOrdenado[i + 1] = arregloOrdenado[i];
+                    i--;
+                    System.out.println("\t\t--------" + Arrays.toString(array));
                 }
-                return arregloOrdenado;
-            
-            } else {
-                for (int j = 1; j < arregloOrdenado.length; j++) {
-                    int key = arregloOrdenado[j];
-                    int i = j - 1;
-                    while (i >= 0 && arregloOrdenado[i] <  key) {
-                        arregloOrdenado[i + 1] = arregloOrdenado[i];
-        
-                        i--;
-                    }
-                    arregloOrdenado[i + 1] = key;
+                System.out.println("\t--------" + Arrays.toString(array));
+                arregloOrdenado[i + 1] = key;
+            }
+            return arregloOrdenado;
+
+        } else {
+            for (int j = 1; j < arregloOrdenado.length; j++) {
+                int key = arregloOrdenado[j];
+                int i = j - 1;
+                while (i >= 0 && arregloOrdenado[i] < key) {
+                    arregloOrdenado[i + 1] = arregloOrdenado[i];
+
+                    i--;
                 }
-                return arregloOrdenado;
+                arregloOrdenado[i + 1] = key;
+            }
+            return arregloOrdenado;
         }
     }
+
     public int[] burbujaComplejaOrdenamiento(int[] array, boolean ascendente) {
         int[] arregloOrdenado = Arrays.copyOf(array, array.length);
         int n = arregloOrdenado.length;
@@ -137,6 +142,5 @@ public class MetodosOrdenamiento {
         System.out.println("Ordenamiento completo: " + Arrays.toString(arregloOrdenado));
         return arregloOrdenado;
     }
-    
 
 }
